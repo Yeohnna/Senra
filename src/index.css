@@ -1,0 +1,323 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 云隙光：0号种子库 —— 深林复苏色彩系统 */
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* 深林复苏核心色系 */
+    --background: 190 36% 8%;         /* #0D1B1E 深渊墨绿 */
+    --foreground: 180 100% 92%;       /* #E0F2F1 极光白绿 */
+    --card: 172 40% 13%;              /* #142E2A 深林绿 */
+    --card-foreground: 180 100% 92%;
+    --popover: 172 40% 12%;
+    --popover-foreground: 180 100% 92%;
+    --primary: 145 63% 49%;           /* #2ECC71 翡翠绿 */
+    --primary-foreground: 190 36% 8%;
+    --secondary: 162 50% 79%;         /* #A8E6CF 柔雾绿 */
+    --secondary-foreground: 190 36% 8%;
+    --muted: 172 30% 18%;
+    --muted-foreground: 162 30% 60%;
+    --accent: 171 28% 20%;            /* 深林绿变体 */
+    --accent-foreground: 180 100% 92%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 180 100% 92%;
+    --border: 176 58% 53%;            /* #4ECDC4 薄荷青 */
+    --input: 172 40% 15%;
+    --ring: 145 63% 49%;
+    --chart-1: 145 63% 49%;          /* 翡翠绿 */
+    --chart-2: 162 50% 79%;          /* 柔雾绿 */
+    --chart-3: 205 29% 51%;          /* 雾霭蓝 */
+    --chart-4: 52 100% 83%;          /* 极淡柠檬黄 */
+    --chart-5: 168 100% 15%;         /* 深青墨 */
+    --sidebar-background: 172 35% 10%;
+    --sidebar-foreground: 162 50% 79%;
+    --sidebar-primary: 145 63% 49%;
+    --sidebar-primary-foreground: 190 36% 8%;
+    --sidebar-accent: 172 30% 18%;
+    --sidebar-accent-foreground: 180 100% 92%;
+    --sidebar-border: 176 30% 25%;
+    --sidebar-ring: 145 63% 49%;
+
+    /* 自定义颜色变量 */
+    --emerald: #2ECC71;
+    --mist-green: #A8E6CF;
+    --aurora-white: #E0F2F1;
+    --fog-blue: #5D8AA8;
+    --deep-teal: #004D40;
+    --lemon-pale: #FFEAA7;
+    --abyss: #0D1B1E;
+    --forest: #142E2A;
+    --mint: #4ECDC4;
+    --glass-bg: rgba(20, 46, 42, 0.85);
+    --glass-border: rgba(78, 205, 196, 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--border) / 0.4);
+    border-radius: 2px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #root {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  /* 毛玻璃面板 */
+  .glass-panel {
+    background: rgba(20, 46, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(78, 205, 196, 0.3);
+    border-radius: 12px;
+  }
+
+  .glass-panel-dark {
+    background: rgba(13, 27, 30, 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(78, 205, 196, 0.2);
+    border-radius: 12px;
+  }
+
+  /* 荧光发光标题 */
+  .glow-text {
+    text-shadow: 0 0 20px rgba(46, 204, 113, 0.8), 0 0 40px rgba(46, 204, 113, 0.4);
+  }
+
+  .glow-text-white {
+    text-shadow: 0 0 20px rgba(224, 242, 241, 0.8), 0 0 40px rgba(224, 242, 241, 0.4);
+  }
+
+  .glow-text-mist {
+    text-shadow: 0 0 15px rgba(168, 230, 207, 0.7), 0 0 30px rgba(168, 230, 207, 0.3);
+  }
+
+  /* 翡翠绿发光盒 */
+  .glow-box {
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4), 0 0 40px rgba(46, 204, 113, 0.2);
+  }
+
+  .glow-box-mint {
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.3), 0 0 30px rgba(78, 205, 196, 0.15);
+  }
+
+  /* 源核呼吸动画 */
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.06); filter: brightness(1.15); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(46, 204, 113, 0.3); }
+    50% { box-shadow: 0 0 50px rgba(46, 204, 113, 0.7), 0 0 80px rgba(46, 204, 113, 0.3); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(2deg); }
+    66% { transform: translateY(-6px) rotate(-1deg); }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes drift {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(10px) translateY(-15px); }
+    50% { transform: translateX(-5px) translateY(-25px); }
+    75% { transform: translateX(-15px) translateY(-10px); }
+    100% { transform: translateX(0) translateY(0); }
+  }
+
+  @keyframes spore-fall {
+    0% { transform: translateY(-10px) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(100vh) translateX(30px); opacity: 0; }
+  }
+
+  @keyframes frost-melt {
+    0% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
+
+  @keyframes light-drop {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(60px); opacity: 0; }
+  }
+
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+  }
+
+  @keyframes wave-in {
+    0% { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 0% 0 0); }
+  }
+
+  @keyframes fog-crawl {
+    0% { transform: translateX(-100px) scaleX(1); opacity: 0.6; }
+    50% { transform: translateX(0px) scaleX(1.2); opacity: 0.9; }
+    100% { transform: translateX(100px) scaleX(0.8); opacity: 0.3; }
+  }
+
+  @keyframes rotate-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes rotate-fast {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes neural-pulse {
+    0%, 100% { opacity: 0.3; stroke-width: 1; }
+    50% { opacity: 1; stroke-width: 2; }
+  }
+
+  @keyframes heat-wave {
+    0%, 100% { filter: blur(0px); }
+    50% { filter: blur(2px) brightness(1.1); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-40px); opacity: 0; }
+  }
+
+  @keyframes slideFromBottom {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes worm-wiggle {
+    0%, 100% { transform: translateX(0) scaleX(1); }
+    25% { transform: translateX(3px) scaleX(1.1); }
+    75% { transform: translateX(-3px) scaleX(0.9); }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+  }
+
+  @keyframes amber-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* 动画工具类 */
+  .animate-breathe { animation: breathe 4s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+  .animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
+  .animate-drift { animation: drift 8s ease-in-out infinite; }
+  .animate-spore { animation: spore-fall 12s linear infinite; }
+  .animate-orbit { animation: orbit 4s linear infinite; }
+  .animate-fog { animation: fog-crawl 8s ease-in-out infinite; }
+  .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+  .animate-rotate-fast { animation: rotate-fast 2s linear infinite; }
+  .animate-fadeIn { animation: fadeIn 0.5s ease forwards; }
+  .animate-fadeOut { animation: fadeOut 0.5s ease forwards; }
+  .animate-slideUp { animation: slideUp 0.6s ease forwards; }
+  .animate-slideFromBottom { animation: slideFromBottom 0.6s ease forwards; }
+  .animate-worm { animation: worm-wiggle 0.5s ease-in-out infinite; }
+  .animate-heat { animation: heat-wave 3s ease-in-out infinite; }
+  .animate-shake { animation: shake 0.5s ease-in-out; }
+  .animate-amber-spin { animation: amber-spin 6s linear infinite; }
+
+  /* 页面切换过渡 */
+  .page-enter {
+    animation: fadeIn 0.8s ease forwards;
+  }
+  .page-exit {
+    animation: fadeOut 0.8s ease forwards;
+  }
+
+  /* 全屏覆盖 */
+  .fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* 渐变文字 */
+  .gradient-text {
+    background: linear-gradient(135deg, #2ECC71, #A8E6CF, #E0F2F1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: linear-gradient(135deg, #FFEAA7, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 金缮脉络效果 */
+  .kintsugi-vein {
+    background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.8), transparent);
+    height: 1px;
+    animation: wave-in 1s ease forwards;
+  }
+}
